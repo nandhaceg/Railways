@@ -1,0 +1,24 @@
+.class_row {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.topspace {
+    margin-top: 100px !important;
+}
+
+@media (min-width: 992px) {
+    .topspace {
+        margin-top: 52px;
+    }
+}
+
+
+.tabletopspace {
+    margin-top: 40px !important;
+}
+
+td,
+th {
+    font-weight: 500 !important;
+}

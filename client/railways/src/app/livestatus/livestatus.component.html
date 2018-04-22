@@ -1,0 +1,241 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar navbar-dark stylish-color-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">PNR STATUS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="">Home
+						<span class="sr-only">(current)</span>
+					</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" [routerLink]="['/pnrstatus']">PNR Status</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" [routerLink]="['/livestatus']">Train Running Status</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Train Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/trainsbetween']">Trains Between</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Train Coach Position</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="class_row row justify-content-center">
+    <div class="col-sm-6">
+        <section class="form-simple">
+            <!--Form with header-->
+            <div class="card topspace">
+                <!--Header-->
+                <div class="header pt-3 grey lighten-2">
+                    <div class="row d-flex justify-content-start">
+                        <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Live Status</h3>
+                    </div>
+                </div>
+                <!--Header-->
+                <div class="card-body mx-4 mt-4">
+                    <form (ngSubmit)="getlivestatus()" #livestatusForm="ngForm">
+                        <!--Body-->
+                        <div class="md-form" style="z-index: 100">
+                        	<input type="text" class="form-control" [(ngModel)]="livestat.trainno" name="trainno" required>
+                            <label for="Form-email4">Train Number</label>
+                        </div>
+						<!--<div class="md-form" style="z-index: 100">
+                        	<input type="text" class="form-control" [(ngModel)]="livestat.date" name="date" required>
+                            <label for="Form-email4">Date(Format:DD/MM/YYYY)</label>
+                        </div> -->
+                        <div class="text-center mb-4">
+                            <button type="submit" class="btn btn-default btn-block z-depth-2">Get Status</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--/Form with header-->
+        </section>
+    </div>
+</div>
+
+<!--Table-->
+<!-- *ngIf="!show" -->
+<table *ngIf="!show" class="table table-bordered tabletopspace">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+            <th>Current Station</th>
+            <th>Position</th>
+        </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody>
+        <tr>
+            <td>{{livedata}}</td>
+            <td>{{position}}</td>
+        </tr>
+
+    </tbody>
+    <!--Table body-->
+
+</table>
+<!--Table-->
+
+
+<!--Table-->
+<!-- *ngIf="!show" -->
+<table *ngIf="!show" class="table table-bordered tabletopspace">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+            <th>Station Name/Distance Covered</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody *ngFor="let pr of route">
+        <tr>
+            <td>{{pr.station.name}}{{pr.distance}}</td>
+            <td>{{pr.status}}</td>
+        </tr>
+
+    </tbody>
+    <!--Table body-->
+
+</table>
+<!--Table-->
+
+
+<!--Table-->
+<!-- *ngIf="!show" -->
+<table *ngIf="!show" class="table table-bordered tabletopspace">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+            <th>Accurate Departure/Accurate Arrival</th>
+            <th>Scheduled Departure/Scheduled Arrival</th>
+        </tr>
+    </thead>
+    <!--Table head-->
+
+    <!--Table body-->
+    <tbody *ngFor="let pr of route">
+        <tr>
+            <td>{{pr.actdep}}{{pr.actarr}}</td>
+            <td>{{pr.schdep}}{{pr.scharr}}</td>
+        </tr>
+
+    </tbody>
+    <!--Table body-->
+
+</table>
+<!--Table-->
+
+
+<!--Footer-->
+<footer class="page-footer font-small stylish-color-dark pt-4 mt-4">
+
+    <!--Footer Links-->
+    <div class="container text-center text-md-left">
+
+        <!-- Footer links -->
+        <div class="row text-center text-md-left mt-3 pb-3">
+
+            <!--First column-->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Nandha Kumar</h6>
+                <p>Freelance Developer and Software Engineer.</p>
+            </div>
+            <!--/.First column-->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Second column-->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Home</h6>
+                <p><a href="#!">Your Account</a></p>
+                <p><a href="#!">Become an Affiliate</a></p>
+                <p><a href="#!">Shipping Rates</a></p>
+                <p><a href="#!">Help</a></p>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Third column-->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+                <p><a href="#!">Train Running Status</a></p>
+                <p><a href="#!">Train Schedule</a></p>
+                <p><a href="#!">Trains Between</a></p>
+                <p><a href="#!">Train Coach Position</a></p>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="w-100 clearfix d-md-none">
+
+            <!--Fourth column-->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                <p><i class="fa fa-home mr-3"></i> Chennai, TN, India</p>
+                <p><i class="fa fa-envelope mr-3"></i> visitnandha95@gmail.com</p>
+                <p><i class="fa fa-phone mr-3"></i>+91 9677386996</p>
+            </div>
+            <!--/.Fourth column-->
+
+        </div>
+        <!-- Footer links -->
+
+        <hr>
+
+        <div class="row py-3 d-flex align-items-center">
+
+            <!--Grid column-->
+            <div class="col-md-8 col-lg-8">
+
+                <!--Copyright-->
+                <p class="text-center text-md-left grey-text">© 2018 Copyright:Nandha Kumar</p>
+                <!--/.Copyright-->
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-4 col-lg-4 ml-lg-0">
+
+                <!--Social buttons-->
+                <div class="text-center text-md-right">
+                    <ul class="list-unstyled list-inline">
+                        <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="list-inline-item"><a class="btn-floating btn-sm rgba-white-slight mx-1"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <!--/.Social buttons-->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+
+    </div>
+
+</footer>
+<!--/.Footer-->

@@ -1,0 +1,19 @@
+.topspace {
+    padding-top: 30px;
+}
+
+@media (min-width: 992px) {
+    .topspace {
+        padding-top: 32px;
+    }
+}
+
+.class_row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+td,
+th {
+    font-weight: 500 !important;
+}

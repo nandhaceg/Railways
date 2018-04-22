@@ -1,0 +1,38 @@
+.topspace {
+    margin-top: 100px !important;
+}
+
+@media (min-width: 992px) {
+    .topspace {
+        margin-top: 52px;
+    }
+}
+
+.class_row {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.tabletopspace {
+    margin-top: 40px !important;
+}
+
+th {
+    font-weight: 500 !important;
+}
+
+.selectspace{
+	margin-top: 20px;
+}
+
+.main-calendar-container{
+	z-index: 1 !important;
+	position: relative !important;
+}
+
+.ngx-datepicker-container[_ngcontent-c2] .ngx-datepicker-input[_ngcontent-c2]{
+	width: 99% !important;
+	border: 1px solid #aaa !important;
+    border-radius: 4px !important;
+    height: 30px !important;
+}
