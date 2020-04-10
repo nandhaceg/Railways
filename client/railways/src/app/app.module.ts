@@ -12,45 +12,18 @@ import { NgxTypeaheadModule } from 'ngx-typeahead';
 import { NgDatepickerModule } from 'ng2-datepicker';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { PnrstatusComponent } from './pnrstatus/pnrstatus.component';
-import { LivestatusComponent } from './livestatus/livestatus.component';
-import { TrainsbetweenComponent } from './trainsbetween/trainsbetween.component';
-
-const appRoutes: Routes = [
-	{
-    	path: "",
-    	component: HomeComponent,
-    	data: { title: "home page" }
-	},
-	{
-		path: "pnrstatus",
-		component: PnrstatusComponent,
-		data: { title: "pnr status" }
-	},
-	{
-		path: "livestatus",
-		component: LivestatusComponent,
-		data: { title: "live status" }
-	},
-	{
-		path: "trainsbetween",
-		component: TrainsbetweenComponent,
-		data: { title: "trains between" }
-	}
-	
-];
+import { Services } from '@angular/core/src/view';
+import { StationService } from './services/station.service';
+import { AppRoutingModule , routingComponents } from './app-routing.module';
 
 @NgModule({
 	declarations: [
-    	AppComponent,
-    	HomeComponent,
-    	PnrstatusComponent,
-    	LivestatusComponent,
-    	TrainsbetweenComponent
+		AppComponent,
+		routingComponents
   	],
   	imports: [
 		BrowserModule,
+		AppRoutingModule,
 		BrowserAnimationsModule,
 		HttpClientModule,
 		FormsModule,
@@ -60,12 +33,11 @@ const appRoutes: Routes = [
 		ToastrModule.forRoot({
 			positionClass: 'toast-top-center',
     		preventDuplicates: true,
-		}),
-    	RouterModule.forRoot(
-			appRoutes,
-		)
+		})
   	],
-  	providers: [],
+  	providers: [
+		  StationService
+	  ],
   	bootstrap: [AppComponent]
 })
 export class AppModule { }
