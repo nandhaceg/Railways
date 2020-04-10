@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpDownloadProgressEvent, HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import * as _ from 'underscore';
 import { DatepickerOptions } from 'ng2-datepicker';
 import * as moment from 'moment';
+import 'rxjs/add/operator/catch';
 
 @Component({
   	selector: 'app-livestatus',
@@ -40,10 +41,16 @@ export class LivestatusComponent implements OnInit {
           		this.position = result.position;
           		this.route = result.route;
           		console.log(this.livedata,this.position,this.route);
-	    	});
+			},
+			error => {
+				console.log(error);
+			});
 	    }
 	}
 
+	errorHandler(error:HttpErrorResponse){
+
+	}
 
   	checkEmptyField(lstatus) {
 	    let data: any = [lstatus.trainno];
