@@ -30,7 +30,7 @@
         "jquery": "^3.3.1",
         "jquery.easing": "^1.4.1",
         "lodash": "^4.17.5",
-        "moment": "^2.22.0",
+        "moment": "^2.29.2",
         "ng2-datepicker": "^2.2.5",
         "ng2-select2": "^1.0.0-beta.11",
         "ngx-toastr": "^8.3.0",
